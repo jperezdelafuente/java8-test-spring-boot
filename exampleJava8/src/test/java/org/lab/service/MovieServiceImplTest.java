@@ -29,7 +29,7 @@ public class MovieServiceImplTest {
 
 	Collection<Session> sessionCollection = new ArrayList<Session>();
 
-	private Collection<Session> getSessionCollection(LocalDate date) {
+	private Collection<Session> getSessionCollection() {
 
 		Collection<Session> sessionCollection = new ArrayList<Session>();
 
@@ -75,7 +75,9 @@ public class MovieServiceImplTest {
 		Session session1 = new Session();
 		session1.setMovieTheater(movieTheater1);
 		session1.setMovie(movie1);
-		session1.setDate(date);
+		LocalDate date1 = LocalDate.of(2015, 1, 15);
+		date1.atTime(18, 20);
+		session1.setDate(date1);
 		session1.setNumSeatsSold(251);
 		session1.setPrice(5.50);
 		sessionCollection.add(session1);
@@ -83,7 +85,9 @@ public class MovieServiceImplTest {
 		Session session2 = new Session();
 		session2.setMovieTheater(movieTheater2);
 		session2.setMovie(movie2);
-		session2.setDate(date);
+		LocalDate date2 = LocalDate.of(2015, 1, 15);
+		date2.atTime(19, 40);
+		session2.setDate(date2);
 		session2.setNumSeatsSold(126);
 		session2.setPrice(6.50);
 		sessionCollection.add(session2);
@@ -91,10 +95,22 @@ public class MovieServiceImplTest {
 		Session session3 = new Session();
 		session3.setMovieTheater(movieTheater3);
 		session3.setMovie(movie3);
-		session3.setDate(date);
+		LocalDate date3 = LocalDate.of(2015, 1, 15);
+		date3.atTime(22, 10);
+		session3.setDate(date3);
 		session3.setNumSeatsSold(151);
 		session3.setPrice(4.50);
 		sessionCollection.add(session3);
+
+		Session session4 = new Session();
+		session4.setMovieTheater(movieTheater3);
+		session4.setMovie(movie3);
+		LocalDate date4 = LocalDate.of(2015, 1, 16);
+		date4.atTime(22, 10);
+		session4.setDate(date4);
+		session4.setNumSeatsSold(151);
+		session4.setPrice(4.50);
+		sessionCollection.add(session4);
 
 		return sessionCollection;
 	}
@@ -103,8 +119,9 @@ public class MovieServiceImplTest {
 	public void numMoviesByDay() {
 		logger.debug("start test numMoviesByDay");
 		Assert.assertNotNull(movieService);
+
+		Collection<Session> sessions = getSessionCollection();
 		LocalDate date = LocalDate.of(2015, 1, 15);
-		Collection<Session> sessions = getSessionCollection(date);
 		long numberSessionByDay = movieService.numMoviesByDay(sessions, date);
 		Assert.assertEquals(3, numberSessionByDay);
 		logger.debug("end test numMoviesByDay");

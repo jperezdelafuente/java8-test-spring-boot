@@ -16,10 +16,10 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public long numMoviesByDay(Collection<Session> sessions, LocalDate date) {
-		logger.info("start numMoviesByDay");
+		logger.debug("start numMoviesByDay");
 		Stream<Session> filter = sessions.stream().filter(
 				session -> session.getDate().equals(date));
-		logger.info("end numMoviesByDay");
+		logger.debug("end numMoviesByDay");
 		return filter.count();
 	}
 }
