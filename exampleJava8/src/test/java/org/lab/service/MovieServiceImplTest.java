@@ -65,7 +65,7 @@ public class MovieServiceImplTest {
 
 		MovieTheater movieTheater2 = new MovieTheater();
 		movieTheater2.setCode("MT2");
-		movieTheater2.setNumSeats(186);
+		movieTheater2.setNumSeats(126);
 
 		MovieTheater movieTheater3 = new MovieTheater();
 		movieTheater3.setCode("MT3");
@@ -116,15 +116,27 @@ public class MovieServiceImplTest {
 	}
 
 	@Test
-	public void numMoviesByDay() {
-		logger.debug("start test numMoviesByDay");
+	public void getNumSessionsByDay() {
+		logger.debug("start test getNumSessionsByDay");
 		Assert.assertNotNull(movieService);
 
 		Collection<Session> sessions = getSessionCollection();
 		LocalDate date = LocalDate.of(2015, 1, 15);
-		long numberSessionByDay = movieService.numMoviesByDay(sessions, date);
+		long numberSessionByDay = movieService.getNumSessionsByDay(sessions,
+				date);
 		Assert.assertEquals(3, numberSessionByDay);
-		logger.debug("end test numMoviesByDay");
+		logger.debug("end test getNumSessionsByDay");
+	}
+
+	@Test
+	public void getNumSessionsFull() {
+		logger.debug("start test getNumSessionsFull");
+		Assert.assertNotNull(movieService);
+
+		Collection<Session> sessions = getSessionCollection();
+		long numberSessionFull = movieService.getNumSessionsFull(sessions);
+		Assert.assertEquals(1, numberSessionFull);
+		logger.debug("end test getNumSessionsFull");
 	}
 
 }

@@ -7,6 +7,8 @@ import org.lab.model.Session;
 
 public interface MovieService {
 
-	public long numMoviesByDay(Collection<Session> sessions, LocalDate date);
+	public long getNumSessionsByDay(Collection<Session> sessions, LocalDate date);
+
+	public long getNumSessionsFull(Collection<Session> sessions);
 
 }
