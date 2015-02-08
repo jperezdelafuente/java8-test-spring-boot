@@ -9,6 +9,8 @@ public interface MovieService {
 
 	public long getNumSessionsByDay(Collection<Session> sessions, LocalDate date);
 
+	public long getNumSessionsByDayPredicate(Collection<Session> sessions, LocalDate date);
+
 	public long getNumSessionsFull(Collection<Session> sessions);
 
 }
