@@ -17,48 +17,37 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = ExampleJava8Application.class)
-public class MovieServiceImplTest {
+public class ServiceExample02predicateImplTest {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private MovieService movieService;
+	private ServiceExample02predicate service;
 
 	Cinema cinema = new Cinema();
 
 	@Test
-	public void getNumSessionsByDay() {
-		logger.debug("start test getNumSessionsByDay");
-		Assert.assertNotNull(movieService);
-
-		Collection<Session> sessions = cinema.getSessions();
-		LocalDate date = LocalDate.of(2015, 1, 15);
-		long numberSessionByDay = movieService.getNumSessionsByDay(sessions, date);
-		Assert.assertEquals(3, numberSessionByDay);
-		logger.debug("end test getNumSessionsByDay");
-	}
-
-	@Test
 	public void getNumSessionsByDayPredicate() {
 		logger.debug("start test getNumSessionsByDayPredicate");
-		Assert.assertNotNull(movieService);
+		Assert.assertNotNull(service);
 
 		Collection<Session> sessions = cinema.getSessions();
 		LocalDate date = LocalDate.of(2015, 1, 15);
-		long numberSessionByDay = movieService.getNumSessionsByDayPredicate(sessions, date);
+		long numberSessionByDay = service.getNumSessionsByDayPredicate(sessions, date);
 		Assert.assertEquals(3, numberSessionByDay);
 		logger.debug("end test getNumSessionsByDayPredicate");
 	}
 
 	@Test
-	public void getNumSessionsFull() {
-		logger.debug("start test getNumSessionsFull");
-		Assert.assertNotNull(movieService);
+	public void getNumSessionsFullByDayPredicate() {
+		logger.debug("start test getNumSessionsFullByDayPredicate");
+		Assert.assertNotNull(service);
 
 		Collection<Session> sessions = cinema.getSessions();
-		long numberSessionFull = movieService.getNumSessionsFull(sessions);
-		Assert.assertEquals(1, numberSessionFull);
-		logger.debug("end test getNumSessionsFull");
+		LocalDate date = LocalDate.of(2015, 1, 15);
+		long numberSessionByDay = service.getNumSessionsFullByDayPredicate(sessions, date);
+		Assert.assertEquals(1, numberSessionByDay);
+		logger.debug("end test getNumSessionsFullByDayPredicate");
 	}
 
 }

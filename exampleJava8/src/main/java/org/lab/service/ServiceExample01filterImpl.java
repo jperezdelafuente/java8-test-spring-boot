@@ -2,7 +2,6 @@ package org.lab.service;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.lab.model.Session;
@@ -11,27 +10,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MovieServiceImpl implements MovieService {
+public class ServiceExample01filterImpl implements ServiceExample01filter {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-	Predicate<Session> equalsDate(LocalDate date) {
-		return x -> x.getDate().equals(date);
-	}
 
 	@Override
 	public long getNumSessionsByDay(Collection<Session> sessions, LocalDate date) {
 		logger.debug("start getNumSessionsByDay");
 		Stream<Session> filter = sessions.stream().filter(session -> session.getDate().equals(date));
 		logger.debug("end getNumSessionsByDay");
-		return filter.count();
-	}
-
-	@Override
-	public long getNumSessionsByDayPredicate(Collection<Session> sessions, LocalDate date) {
-		logger.debug("start getNumSessionsByDayPredicate");
-		Stream<Session> filter = sessions.stream().filter(equalsDate(date));
-		logger.debug("end getNumSessionsByDayPredicate");
 		return filter.count();
 	}
 

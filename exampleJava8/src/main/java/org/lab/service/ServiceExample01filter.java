@@ -5,11 +5,9 @@ import java.util.Collection;
 
 import org.lab.model.Session;
 
-public interface MovieService {
+public interface ServiceExample01filter {
 
 	public long getNumSessionsByDay(Collection<Session> sessions, LocalDate date);
-
-	public long getNumSessionsByDayPredicate(Collection<Session> sessions, LocalDate date);
 
 	public long getNumSessionsFull(Collection<Session> sessions);
 
