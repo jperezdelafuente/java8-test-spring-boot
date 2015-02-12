@@ -22,16 +22,16 @@ public class Cinema {
 		movie1.setDuration(duration1);
 
 		Movie movie2 = new Movie();
-		movie1.setCode("2");
-		movie1.setName("Blade Runner");
+		movie2.setCode("2");
+		movie2.setName("Blade Runner");
 		Duration duration2 = new Duration();
 		duration2.setHours(1);
 		duration2.setMinutes(52);
 		movie2.setDuration(duration2);
 
 		Movie movie3 = new Movie();
-		movie1.setCode("3");
-		movie1.setName("Jurassic Park");
+		movie3.setCode("3");
+		movie3.setName("Jurassic Park");
 		Duration duration3 = new Duration();
 		duration3.setHours(2);
 		duration3.setMinutes(0);
@@ -88,7 +88,7 @@ public class Cinema {
 		date4.atTime(22, 10);
 		session4.setDate(date4);
 		session4.setNumSeatsSold(151);
-		session4.setPrice(4.50);
+		session4.setPrice(4.60);
 		sessions.add(session4);
 
 	}
