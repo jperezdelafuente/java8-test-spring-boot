@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({ "org.lab.service" })
+@ComponentScan({ "org.lab" })
 public class ExampleJava8Application {
 
 	public static void main(String[] args) {
