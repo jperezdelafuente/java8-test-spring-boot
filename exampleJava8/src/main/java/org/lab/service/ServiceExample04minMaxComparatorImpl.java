@@ -21,4 +21,10 @@ public class ServiceExample04minMaxComparatorImpl extends Predicates implements 
 		Optional<Session> session = sessions.stream().max(Comparator.comparingDouble(Session::getPrice));
 		return session;
 	}
+
+	@Override
+	public Optional<Session> getSessionMaxOccupation(Collection<Session> sessions) {
+		Optional<Session> session = sessions.stream().max(Comparator.comparingDouble(getOccupation()));
+		return session;
+	}
 }

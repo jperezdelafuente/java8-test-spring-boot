@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import org.lab.model.Session;
 
-public interface ServiceExample02predicate {
+public interface ServiceExample02predicate extends ServiceExampleDefault {
 
 	public long getNumSessionsByDayPredicate(Collection<Session> sessions, LocalDate date);
 

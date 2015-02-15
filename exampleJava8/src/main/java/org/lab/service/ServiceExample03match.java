@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import org.lab.model.Session;
 
-public interface ServiceExample03match {
+public interface ServiceExample03match extends ServiceExampleDefault {
 
 	public Boolean allSessionsFull(Collection<Session> sessions, LocalDate date);
 
