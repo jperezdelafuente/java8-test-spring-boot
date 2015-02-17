@@ -14,4 +14,16 @@ public class ServiceExample05mapImpl extends Predicates implements ServiceExampl
 		return occupation;
 	}
 
+	@Override
+	public Double getSumTakings(Collection<Session> sessions) {
+		Double sumTakings = sessions.stream().mapToDouble(x -> x.getNumSeatsSold() * x.getPrice()).sum();
+		return sumTakings;
+	}
+
+	@Override
+	public Double getAverageTakings(Collection<Session> sessions) {
+		Double averageTakings = sessions.stream().mapToDouble(x -> x.getNumSeatsSold() * x.getPrice()).average().getAsDouble();
+		return averageTakings;
+	}
+
 }

@@ -8,4 +8,8 @@ public interface ServiceExample05map extends ServiceExampleDefault {
 
 	public Double getMaxOccupation(Collection<Session> sessions);
 
+	public Double getSumTakings(Collection<Session> sessions);
+
+	public Double getAverageTakings(Collection<Session> sessions);
+
 }

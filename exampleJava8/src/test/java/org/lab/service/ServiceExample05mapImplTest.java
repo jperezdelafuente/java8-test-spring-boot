@@ -28,4 +28,21 @@ public class ServiceExample05mapImplTest {
 		Double occupation = service.getMaxOccupation(sessions);
 		Assert.assertEquals(1, occupation.doubleValue(), 0);
 	}
+
+	@Test
+	public void getSumTakings() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Double sumTakings = service.getSumTakings(sessions);
+		System.out.println(sumTakings);
+		Assert.assertEquals(3573.6, sumTakings.doubleValue(), 0);
+	}
+
+	@Test
+	public void getAverageTakings() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Double averageTakings = service.getAverageTakings(sessions);
+		Assert.assertEquals(893.4, averageTakings.doubleValue(), 0);
+	}
 }
