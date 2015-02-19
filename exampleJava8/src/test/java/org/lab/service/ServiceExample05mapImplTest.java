@@ -34,7 +34,6 @@ public class ServiceExample05mapImplTest {
 		Assert.assertNotNull(service);
 		Collection<Session> sessions = cinema.getSessions();
 		Double sumTakings = service.getSumTakings(sessions);
-		System.out.println(sumTakings);
 		Assert.assertEquals(3573.6, sumTakings.doubleValue(), 0);
 	}
 
