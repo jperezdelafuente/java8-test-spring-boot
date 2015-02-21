@@ -7,6 +7,8 @@ import org.lab.model.Session;
 
 public interface ServiceExample06reduce extends ServiceExampleDefault {
 
-	public Duration getSumDurartion(Collection<Session> sessions);
+	public Duration getSumDuration(Collection<Session> sessions);
+
+	public Duration getSumDurationWithBiFunction(Collection<Session> sessions);
 
 }

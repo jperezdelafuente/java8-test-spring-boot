@@ -23,10 +23,19 @@ public class ServiceExample06reduceImplTest {
 	Cinema cinema = new Cinema();
 
 	@Test
-	public void getSumDurartion() {
+	public void getSumDuration() {
 		Assert.assertNotNull(service);
 		Collection<Session> sessions = cinema.getSessions();
-		Duration sumDuration = service.getSumDurartion(sessions);
+		Duration sumDuration = service.getSumDuration(sessions);
+		Assert.assertEquals(8, sumDuration.getHours(), 0);
+		Assert.assertEquals(59, sumDuration.getMinutes(), 0);
+	}
+
+	@Test
+	public void getSumDurationWithBiFunction() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Duration sumDuration = service.getSumDurationWithBiFunction(sessions);
 		Assert.assertEquals(8, sumDuration.getHours(), 0);
 		Assert.assertEquals(59, sumDuration.getMinutes(), 0);
 	}
