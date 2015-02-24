@@ -8,9 +8,12 @@ public class Cinema {
 
 	Collection<Session> sessions = null;
 
+	Collection<Movie> movies = null;
+
 	public Cinema() {
 
 		sessions = new ArrayList<Session>();
+		movies = new ArrayList<Movie>();
 
 		// Movies
 		Movie movie1 = new Movie();
@@ -20,6 +23,7 @@ public class Cinema {
 		duration1.setHours(3);
 		duration1.setMinutes(7);
 		movie1.setDuration(duration1);
+		movies.add(movie1);
 
 		Movie movie2 = new Movie();
 		movie2.setCode("2");
@@ -28,6 +32,7 @@ public class Cinema {
 		duration2.setHours(1);
 		duration2.setMinutes(52);
 		movie2.setDuration(duration2);
+		movies.add(movie2);
 
 		Movie movie3 = new Movie();
 		movie3.setCode("3");
@@ -36,6 +41,7 @@ public class Cinema {
 		duration3.setHours(2);
 		duration3.setMinutes(0);
 		movie3.setDuration(duration3);
+		movies.add(movie3);
 
 		// Movies Theaters
 		MovieTheater movieTheater1 = new MovieTheater();
@@ -95,6 +101,10 @@ public class Cinema {
 
 	public Collection<Session> getSessions() {
 		return sessions;
+	}
+
+	public Collection<Movie> getMovies() {
+		return movies;
 	}
 
 }
