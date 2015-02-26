@@ -58,6 +58,7 @@ public class Cinema {
 
 		// Sessions
 		Session session1 = new Session();
+		session1.setCodSession(1);
 		session1.setMovieTheater(movieTheater1);
 		session1.setMovie(movie1);
 		LocalDate date1 = LocalDate.of(2015, 1, 15);
@@ -68,6 +69,7 @@ public class Cinema {
 		sessions.add(session1);
 
 		Session session2 = new Session();
+		session2.setCodSession(2);
 		session2.setMovieTheater(movieTheater2);
 		session2.setMovie(movie2);
 		LocalDate date2 = LocalDate.of(2015, 1, 15);
@@ -78,6 +80,7 @@ public class Cinema {
 		sessions.add(session2);
 
 		Session session3 = new Session();
+		session3.setCodSession(3);
 		session3.setMovieTheater(movieTheater3);
 		session3.setMovie(movie3);
 		LocalDate date3 = LocalDate.of(2015, 1, 15);
@@ -88,6 +91,7 @@ public class Cinema {
 		sessions.add(session3);
 
 		Session session4 = new Session();
+		session4.setCodSession(4);
 		session4.setMovieTheater(movieTheater3);
 		session4.setMovie(movie3);
 		LocalDate date4 = LocalDate.of(2015, 1, 16);
