@@ -1,6 +1,7 @@
 package org.lab.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,26 +30,12 @@ public class ServiceExample08sortedImplTest {
 		Collection<Session> sessions = cinema.getSessions();
 		Stream<Session> streamSessions = service.getSessionSortedByPrice(sessions);
 
-		Collection<Session> sessionsList = streamSessions.collect(Collectors.toList());
+		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
 
-		Integer numSession = 0;
-		for (Session session : sessionsList) {
-			switch (numSession) {
-			case 0:
-				Assert.assertEquals(session.getCodSession().intValue(), 3);
-				break;
-			case 1:
-				Assert.assertEquals(session.getCodSession().intValue(), 4);
-				break;
-			case 2:
-				Assert.assertEquals(session.getCodSession().intValue(), 1);
-				break;
-			case 3:
-				Assert.assertEquals(session.getCodSession().intValue(), 2);
-				break;
-			}
-			numSession++;
-		}
+		Assert.assertEquals(sessionsList.get(0).getCodSession().intValue(), 3);
+		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 4);
+		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 1);
+		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 2);
 	}
 
 	@Test
@@ -57,26 +44,12 @@ public class ServiceExample08sortedImplTest {
 		Collection<Session> sessions = cinema.getSessions();
 		Stream<Session> streamSessions = service.getSessionSortedByPriceDesc(sessions);
 
-		Collection<Session> sessionsList = streamSessions.collect(Collectors.toList());
+		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
 
-		Integer numSession = 0;
-		for (Session session : sessionsList) {
-			switch (numSession) {
-			case 0:
-				Assert.assertEquals(session.getCodSession().intValue(), 2);
-				break;
-			case 1:
-				Assert.assertEquals(session.getCodSession().intValue(), 1);
-				break;
-			case 2:
-				Assert.assertEquals(session.getCodSession().intValue(), 4);
-				break;
-			case 3:
-				Assert.assertEquals(session.getCodSession().intValue(), 3);
-				break;
-			}
-			numSession++;
-		}
+		Assert.assertEquals(sessionsList.get(0).getCodSession().intValue(), 2);
+		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 1);
+		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 4);
+		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 3);
 	}
 
 	@Test
@@ -85,25 +58,11 @@ public class ServiceExample08sortedImplTest {
 		Collection<Session> sessions = cinema.getSessions();
 		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions);
 
-		Collection<Session> sessionsList = streamSessions.collect(Collectors.toList());
+		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
 
-		Integer numSession = 0;
-		for (Session session : sessionsList) {
-			switch (numSession) {
-			case 0:
-				Assert.assertEquals(session.getCodSession().intValue(), 3);
-				break;
-			case 1:
-				Assert.assertEquals(session.getCodSession().intValue(), 1);
-				break;
-			case 2:
-				Assert.assertEquals(session.getCodSession().intValue(), 2);
-				break;
-			case 3:
-				Assert.assertEquals(session.getCodSession().intValue(), 4);
-				break;
-			}
-			numSession++;
-		}
+		Assert.assertEquals(sessionsList.get(0).getCodSession().intValue(), 3);
+		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 1);
+		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 2);
+		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 4);
 	}
 }
