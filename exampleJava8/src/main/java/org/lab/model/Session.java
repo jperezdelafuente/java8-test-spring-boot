@@ -45,6 +45,10 @@ public class Session {
 		return date;
 	}
 
+	public LocalDate getDateWithOutHour() {
+		return LocalDate.of(date.getYear(), date.getMonth(), date.getDayOfMonth());
+	}
+
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
