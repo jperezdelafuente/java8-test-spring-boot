@@ -17,6 +17,12 @@ public class ServiceExample08sortedImpl extends Predicates implements ServiceExa
 	}
 
 	@Override
+	public Stream<Session> getSessionSortedByPriceDesc(Collection<Session> sessions) {
+		Stream<Session> sessionSorted = sessions.stream().sorted(Comparator.comparing(Session::getPrice).reversed());
+		return sessionSorted;
+	}
+
+	@Override
 	public Stream<Session> getSessionSortedByDateAndPrice(Collection<Session> sessions) {
 		Stream<Session> sessionSorted = sessions.stream().sorted(
 				Comparator.comparing(Session::getDateWithOutHour).thenComparing(Session::getPrice));

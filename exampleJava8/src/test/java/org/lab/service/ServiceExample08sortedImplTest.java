@@ -52,6 +52,34 @@ public class ServiceExample08sortedImplTest {
 	}
 
 	@Test
+	public void getSessionSortedByPriceDesc() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Stream<Session> streamSessions = service.getSessionSortedByPriceDesc(sessions);
+
+		Collection<Session> sessionsList = streamSessions.collect(Collectors.toList());
+
+		Integer numSession = 0;
+		for (Session session : sessionsList) {
+			switch (numSession) {
+			case 0:
+				Assert.assertEquals(session.getCodSession().intValue(), 2);
+				break;
+			case 1:
+				Assert.assertEquals(session.getCodSession().intValue(), 1);
+				break;
+			case 2:
+				Assert.assertEquals(session.getCodSession().intValue(), 4);
+				break;
+			case 3:
+				Assert.assertEquals(session.getCodSession().intValue(), 3);
+				break;
+			}
+			numSession++;
+		}
+	}
+
+	@Test
 	public void getSessionSortedByDateAndPrice() {
 		Assert.assertNotNull(service);
 		Collection<Session> sessions = cinema.getSessions();
