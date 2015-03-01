@@ -24,22 +24,22 @@ public class ServiceExample08sortedImpl extends Predicates implements ServiceExa
 	@Override
 	public Stream<Session> getSessionSortedByDateAndPrice(Collection<Session> sessions, boolean reversedDate, boolean reversedPrice) {
 		Stream<Session> sessionSorted;
+
+		Comparator<Session> comparatorDate = Comparator.comparing(Session::getDateWithOutHour);
+		Comparator<Session> comparatorPrice = Comparator.comparing(Session::getPrice);
+		Comparator<Session> comparatorPriceReversed = Comparator.comparing(Session::getPrice).reversed();
+
 		if (!reversedDate) {
 			if (!reversedPrice) {
-				sessionSorted = sessions.stream()
-						.sorted(Comparator.comparing(Session::getDateWithOutHour).thenComparing(Session::getPrice));
+				sessionSorted = sessions.stream().sorted(comparatorDate.thenComparing(comparatorPrice));
 			} else {
-				Comparator<Session> comparatorPrice = Comparator.comparing(Session::getPrice).reversed();
-				sessionSorted = sessions.stream().sorted(Comparator.comparing(Session::getDateWithOutHour).thenComparing(comparatorPrice));
+				sessionSorted = sessions.stream().sorted(comparatorDate.thenComparing(comparatorPriceReversed));
 			}
 		} else {
 			if (!reversedPrice) {
-				sessionSorted = sessions.stream().sorted(
-						Comparator.comparing(Session::getDateWithOutHour).reversed().thenComparing(Session::getPrice));
+				sessionSorted = sessions.stream().sorted(comparatorDate.reversed().thenComparing(comparatorPrice));
 			} else {
-				Comparator<Session> comparatorPrice = Comparator.comparing(Session::getPrice).reversed();
-				sessionSorted = sessions.stream().sorted(
-						Comparator.comparing(Session::getDateWithOutHour).reversed().thenComparing(comparatorPrice));
+				sessionSorted = sessions.stream().sorted(comparatorDate.reversed().thenComparing(comparatorPriceReversed));
 			}
 		}
 		return sessionSorted;
