@@ -28,7 +28,8 @@ public class ServiceExample08sortedImplTest {
 	public void getSessionSortedByPrice() {
 		Assert.assertNotNull(service);
 		Collection<Session> sessions = cinema.getSessions();
-		Stream<Session> streamSessions = service.getSessionSortedByPrice(sessions);
+		boolean reversed = false;
+		Stream<Session> streamSessions = service.getSessionSortedByPrice(sessions, reversed);
 
 		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
 
@@ -42,7 +43,8 @@ public class ServiceExample08sortedImplTest {
 	public void getSessionSortedByPriceDesc() {
 		Assert.assertNotNull(service);
 		Collection<Session> sessions = cinema.getSessions();
-		Stream<Session> streamSessions = service.getSessionSortedByPriceDesc(sessions);
+		boolean reversed = true;
+		Stream<Session> streamSessions = service.getSessionSortedByPrice(sessions, reversed);
 
 		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
 
@@ -56,7 +58,9 @@ public class ServiceExample08sortedImplTest {
 	public void getSessionSortedByDateAndPrice() {
 		Assert.assertNotNull(service);
 		Collection<Session> sessions = cinema.getSessions();
-		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions);
+		boolean reversedDate = false;
+		boolean reversedPrice = false;
+		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
 
 		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
 
@@ -64,5 +68,53 @@ public class ServiceExample08sortedImplTest {
 		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 1);
 		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 2);
 		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 4);
+	}
+
+	@Test
+	public void getSessionSortedByDateAndPriceDesc() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		boolean reversedDate = false;
+		boolean reversedPrice = true;
+		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
+
+		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
+
+		Assert.assertEquals(sessionsList.get(0).getCodSession().intValue(), 2);
+		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 1);
+		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 3);
+		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 4);
+	}
+
+	@Test
+	public void getSessionSortedByDateDescAndPrice() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		boolean reversedDate = true;
+		boolean reversedPrice = false;
+		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
+
+		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
+
+		Assert.assertEquals(sessionsList.get(0).getCodSession().intValue(), 4);
+		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 3);
+		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 1);
+		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 2);
+	}
+
+	@Test
+	public void getSessionSortedByDateDescAndPriceDesc() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		boolean reversedDate = true;
+		boolean reversedPrice = true;
+		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
+
+		List<Session> sessionsList = streamSessions.collect(Collectors.toList());
+
+		Assert.assertEquals(sessionsList.get(0).getCodSession().intValue(), 4);
+		Assert.assertEquals(sessionsList.get(1).getCodSession().intValue(), 2);
+		Assert.assertEquals(sessionsList.get(2).getCodSession().intValue(), 1);
+		Assert.assertEquals(sessionsList.get(3).getCodSession().intValue(), 3);
 	}
 }
