@@ -29,7 +29,7 @@ public class ServiceExample07forEachImplTest {
 		service.addDurationToMovies(movies, 10);
 
 		movies.forEach(movie -> {
-			switch (movie.getName()) {
+			switch (movie.getTitle()) {
 			case "King kong":
 				Assert.assertTrue(movie.getDuration().getTotalMinutes() == 197);
 				break;

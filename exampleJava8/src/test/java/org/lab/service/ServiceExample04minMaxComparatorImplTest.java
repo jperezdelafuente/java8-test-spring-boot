@@ -28,7 +28,7 @@ public class ServiceExample04minMaxComparatorImplTest {
 		Collection<Session> sessions = cinema.getSessions();
 		Optional<Session> session = service.getSessionMinPrice(sessions);
 		Assert.assertEquals(true, session.isPresent());
-		Assert.assertTrue(session.get().getMovie().getName().equals("Jurassic Park"));
+		Assert.assertTrue(session.get().getMovie().getTitle().equals("Jurassic Park"));
 	}
 
 	@Test
@@ -37,7 +37,7 @@ public class ServiceExample04minMaxComparatorImplTest {
 		Collection<Session> sessions = cinema.getSessions();
 		Optional<Session> session = service.getSessionMaxPrice(sessions);
 		Assert.assertEquals(true, session.isPresent());
-		Assert.assertTrue(session.get().getMovie().getName().equals("Blade Runner"));
+		Assert.assertTrue(session.get().getMovie().getTitle().equals("Blade Runner"));
 	}
 
 	@Test

@@ -4,7 +4,7 @@ public class Movie {
 
 	private String code;
 
-	private String name;
+	private String title;
 
 	private Duration duration;
 
@@ -16,12 +16,12 @@ public class Movie {
 		this.code = code;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Duration getDuration() {
@@ -38,7 +38,7 @@ public class Movie {
 		builder.append("Movie [code=");
 		builder.append(code);
 		builder.append(", name=");
-		builder.append(name);
+		builder.append(title);
 		builder.append(", duration=");
 		builder.append(duration);
 		builder.append("]");

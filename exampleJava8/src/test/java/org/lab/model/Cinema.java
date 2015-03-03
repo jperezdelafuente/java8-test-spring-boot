@@ -18,7 +18,7 @@ public class Cinema {
 		// Movies
 		Movie movie1 = new Movie();
 		movie1.setCode("1");
-		movie1.setName("King kong");
+		movie1.setTitle("King kong");
 		Duration duration1 = new Duration();
 		duration1.setHours(3);
 		duration1.setMinutes(7);
@@ -27,7 +27,7 @@ public class Cinema {
 
 		Movie movie2 = new Movie();
 		movie2.setCode("2");
-		movie2.setName("Blade Runner");
+		movie2.setTitle("Blade Runner");
 		Duration duration2 = new Duration();
 		duration2.setHours(1);
 		duration2.setMinutes(52);
@@ -36,7 +36,7 @@ public class Cinema {
 
 		Movie movie3 = new Movie();
 		movie3.setCode("3");
-		movie3.setName("Jurassic Park");
+		movie3.setTitle("Jurassic Park");
 		Duration duration3 = new Duration();
 		duration3.setHours(2);
 		duration3.setMinutes(0);
