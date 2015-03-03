@@ -10,6 +10,4 @@ public interface ServiceExample09collect extends ServiceExampleDefault {
 
 	public List<Duration> getDurations(Collection<Session> sessions);
 
-	public List<Strings> getNDurations(Collection<Session> sessions);
-
 }
