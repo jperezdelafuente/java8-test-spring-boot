@@ -2,6 +2,7 @@ package org.lab.service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,9 +30,22 @@ public class ServiceExample09collectImplTest {
 		Collection<Session> sessions = cinema.getSessions();
 		List<Duration> listDuration = service.getDurations(sessions);
 
+		Assert.assertEquals(listDuration.size(), 4);
 		Assert.assertEquals(listDuration.get(0).getTotalMinutes().intValue(), 187);
 		Assert.assertEquals(listDuration.get(1).getTotalMinutes().intValue(), 112);
 		Assert.assertEquals(listDuration.get(2).getTotalMinutes().intValue(), 120);
 		Assert.assertEquals(listDuration.get(3).getTotalMinutes().intValue(), 120);
+	}
+
+	@Test
+	public void getTitles() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Set<String> listTitles = service.getTitles(sessions);
+
+		Assert.assertEquals(listTitles.size(), 3);
+		Assert.assertTrue(listTitles.contains("King kong"));
+		Assert.assertTrue(listTitles.contains("Blade Runner"));
+		Assert.assertTrue(listTitles.contains("Jurassic Park"));
 	}
 }
