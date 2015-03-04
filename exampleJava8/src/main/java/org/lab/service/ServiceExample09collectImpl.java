@@ -3,6 +3,8 @@ package org.lab.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.lab.model.Duration;
@@ -20,6 +22,11 @@ public class ServiceExample09collectImpl extends Predicates implements ServiceEx
 	@Override
 	public Set<String> getTitles(Collection<Session> sessions) {
 		return sessions.stream().map(x -> x.getMovie().getTitle()).collect(Collectors.toSet());
+	}
+
+	@Override
+	public SortedSet<String> getTitlesSorted(Collection<Session> sessions) {
+		return sessions.stream().map(x -> x.getMovie().getTitle()).sorted().collect(Collectors.toCollection(TreeSet::new));
 	}
 
 }

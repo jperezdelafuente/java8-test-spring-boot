@@ -3,6 +3,7 @@ package org.lab.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,5 +48,29 @@ public class ServiceExample09collectImplTest {
 		Assert.assertTrue(listTitles.contains("King kong"));
 		Assert.assertTrue(listTitles.contains("Blade Runner"));
 		Assert.assertTrue(listTitles.contains("Jurassic Park"));
+	}
+
+	@Test
+	public void getTitlesSorted() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		SortedSet<String> listTitles = service.getTitlesSorted(sessions);
+
+		Assert.assertEquals(listTitles.size(), 3);
+		int num = 0;
+		for (String title : listTitles) {
+			switch (num) {
+			case 0:
+				Assert.assertTrue(title.equals("Blade Runner"));
+				break;
+			case 1:
+				Assert.assertTrue(title.equals("Jurassic Park"));
+				break;
+			case 2:
+				Assert.assertTrue(title.equals("King kong"));
+				break;
+			}
+			num++;
+		}
 	}
 }
