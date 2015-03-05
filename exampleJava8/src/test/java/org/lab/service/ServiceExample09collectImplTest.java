@@ -73,4 +73,29 @@ public class ServiceExample09collectImplTest {
 			num++;
 		}
 	}
+
+	@Test
+	public void getDurationsIncreasedSorted() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		SortedSet<Duration> listDurations = service.getDurationsIncreasedSorted(sessions, 10);
+
+		Assert.assertEquals(listDurations.size(), 3);
+		int num = 0;
+		for (Duration duration : listDurations) {
+			switch (num) {
+			case 0:
+				Assert.assertEquals(duration.getTotalMinutes().intValue(), 122);
+				break;
+			case 1:
+				Assert.assertEquals(duration.getTotalMinutes().intValue(), 130);
+				break;
+			case 2:
+				Assert.assertEquals(duration.getTotalMinutes().intValue(), 197);
+				break;
+			}
+			num++;
+		}
+	}
+
 }

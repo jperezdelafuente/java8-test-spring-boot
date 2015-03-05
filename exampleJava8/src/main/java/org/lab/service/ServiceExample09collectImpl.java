@@ -29,4 +29,10 @@ public class ServiceExample09collectImpl extends Predicates implements ServiceEx
 		return sessions.stream().map(x -> x.getMovie().getTitle()).sorted().collect(Collectors.toCollection(TreeSet::new));
 	}
 
+	@Override
+	public SortedSet<Duration> getDurationsIncreasedSorted(Collection<Session> sessions, int minutes) {
+		Set<Duration> setDurations = sessions.stream().map(x -> x.getMovie().getDuration()).collect(Collectors.toSet());
+		setDurations.stream().forEach(x -> x.addDuration(new Duration(0, minutes)));
+		return setDurations.stream().sorted().collect(Collectors.toCollection(TreeSet::new));
+	}
 }

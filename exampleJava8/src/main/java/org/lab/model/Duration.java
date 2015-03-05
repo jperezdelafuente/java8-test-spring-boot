@@ -1,6 +1,6 @@
 package org.lab.model;
 
-public class Duration {
+public class Duration implements Comparable<Duration> {
 
 	private Integer hours;
 
@@ -59,6 +59,11 @@ public class Duration {
 		builder.append(totalMinutes);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int compareTo(Duration o) {
+		return this.getTotalMinutes().compareTo(o.getTotalMinutes());
 	}
 
 }

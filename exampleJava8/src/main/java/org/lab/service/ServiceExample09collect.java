@@ -16,4 +16,6 @@ public interface ServiceExample09collect extends ServiceExampleDefault {
 
 	public SortedSet<String> getTitlesSorted(Collection<Session> sessions);
 
+	public SortedSet<Duration> getDurationsIncreasedSorted(Collection<Session> sessions, int minutes);
+
 }
