@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -22,12 +23,17 @@ public class ServiceExample08sortedImplTest {
 	@Autowired
 	private ServiceExample08sorted service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+	}
 
 	@Test
 	public void getSessionSortedByPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		boolean reversed = false;
 		Stream<Session> streamSessions = service.getSessionSortedByPrice(sessions, reversed);
 
@@ -41,8 +47,6 @@ public class ServiceExample08sortedImplTest {
 
 	@Test
 	public void getSessionSortedByPriceDesc() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		boolean reversed = true;
 		Stream<Session> streamSessions = service.getSessionSortedByPrice(sessions, reversed);
 
@@ -56,8 +60,6 @@ public class ServiceExample08sortedImplTest {
 
 	@Test
 	public void getSessionSortedByDateAndPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		boolean reversedDate = false;
 		boolean reversedPrice = false;
 		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
@@ -72,8 +74,6 @@ public class ServiceExample08sortedImplTest {
 
 	@Test
 	public void getSessionSortedByDateAndPriceDesc() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		boolean reversedDate = false;
 		boolean reversedPrice = true;
 		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
@@ -88,8 +88,6 @@ public class ServiceExample08sortedImplTest {
 
 	@Test
 	public void getSessionSortedByDateDescAndPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		boolean reversedDate = true;
 		boolean reversedPrice = false;
 		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);
@@ -104,8 +102,6 @@ public class ServiceExample08sortedImplTest {
 
 	@Test
 	public void getSessionSortedByDateDescAndPriceDesc() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		boolean reversedDate = true;
 		boolean reversedPrice = true;
 		Stream<Session> streamSessions = service.getSessionSortedByDateAndPrice(sessions, reversedDate, reversedPrice);

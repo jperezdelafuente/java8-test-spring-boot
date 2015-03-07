@@ -3,6 +3,7 @@ package org.lab.service;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -19,28 +20,29 @@ public class ServiceExample05mapImplTest {
 	@Autowired
 	private ServiceExample05map service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+	}
 
 	@Test
 	public void getMaxOccupation() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Double occupation = service.getMaxOccupation(sessions);
 		Assert.assertEquals(1, occupation.doubleValue(), 0);
 	}
 
 	@Test
 	public void getSumTakings() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Double sumTakings = service.getSumTakings(sessions);
 		Assert.assertEquals(3573.6, sumTakings.doubleValue(), 0);
 	}
 
 	@Test
 	public void getAverageTakings() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Double averageTakings = service.getAverageTakings(sessions);
 		Assert.assertEquals(893.4, averageTakings.doubleValue(), 0);
 	}

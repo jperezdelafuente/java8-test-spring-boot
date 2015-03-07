@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -20,13 +21,17 @@ public class ServiceExample02predicateImplTest {
 	@Autowired
 	private ServiceExample02predicate service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+	}
 
 	@Test
 	public void getNumSessionsByDayPredicate() {
-		Assert.assertNotNull(service);
-
-		Collection<Session> sessions = cinema.getSessions();
 		LocalDate date = LocalDate.of(2015, 1, 15);
 		long numberSessionByDay = service.getNumSessionsByDayPredicate(sessions, date);
 		Assert.assertEquals(3, numberSessionByDay);
@@ -34,9 +39,6 @@ public class ServiceExample02predicateImplTest {
 
 	@Test
 	public void getNumSessionsFullByDayPredicate() {
-		Assert.assertNotNull(service);
-
-		Collection<Session> sessions = cinema.getSessions();
 		LocalDate date = LocalDate.of(2015, 1, 15);
 		long numberSessionByDay = service.getNumSessionsFullByDayPredicate(sessions, date);
 		Assert.assertEquals(1, numberSessionByDay);

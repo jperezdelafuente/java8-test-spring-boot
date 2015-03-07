@@ -3,6 +3,7 @@ package org.lab.service;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -19,41 +20,36 @@ public class ServiceExample10statisticsImplTest {
 	@Autowired
 	private ServiceExample10statistics service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+	}
 
 	@Test
 	public void getDurations() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Double avergePrice = service.getAveragePrice(sessions);
-
 		Assert.assertEquals(avergePrice, 5.275, 0);
 	}
 
 	@Test
 	public void getMaxPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Integer maxNumSeatsSold = service.getMaxNumSeatsSold(sessions);
-
 		Assert.assertEquals(maxNumSeatsSold, 251, 0);
 	}
 
 	@Test
 	public void getMinPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Integer minNumSeatsSold = service.getMinNumSeatsSold(sessions);
-
 		Assert.assertEquals(minNumSeatsSold, 126, 0);
 	}
 
 	@Test
 	public void getSumPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Long sumNumSeatsSold = service.getSumNumSeatsSold(sessions);
-
 		Assert.assertEquals(sumNumSeatsSold, 679, 0);
 	}
 

@@ -3,6 +3,7 @@ package org.lab.service;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -20,12 +21,20 @@ public class ServiceExample07forEachImplTest {
 	@Autowired
 	private ServiceExample07forEach service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	private Collection<Movie> movies = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+		movies = cinema.getMovies();
+	}
 
 	@Test
 	public void addDurationToSession() {
-		Assert.assertNotNull(service);
-		Collection<Movie> movies = cinema.getMovies();
 		service.addDurationToMovies(movies, 10);
 
 		movies.forEach(movie -> {
@@ -45,8 +54,6 @@ public class ServiceExample07forEachImplTest {
 
 	@Test
 	public void addPercentAditionalPrice() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		service.addPercentAditionalPrice(sessions, 10);
 
 		sessions.forEach(session -> {

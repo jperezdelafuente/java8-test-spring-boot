@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.SortedSet;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -23,12 +24,17 @@ public class ServiceExample09collectImplTest {
 	@Autowired
 	private ServiceExample09collect service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+	}
 
 	@Test
 	public void getDurations() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		List<Duration> listDuration = service.getDurations(sessions);
 
 		Assert.assertEquals(listDuration.size(), 4);
@@ -40,8 +46,6 @@ public class ServiceExample09collectImplTest {
 
 	@Test
 	public void getTitles() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		Set<String> listTitles = service.getTitles(sessions);
 
 		Assert.assertEquals(listTitles.size(), 3);
@@ -52,8 +56,6 @@ public class ServiceExample09collectImplTest {
 
 	@Test
 	public void getTitlesSorted() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		SortedSet<String> listTitles = service.getTitlesSorted(sessions);
 
 		Assert.assertEquals(listTitles.size(), 3);
@@ -76,8 +78,6 @@ public class ServiceExample09collectImplTest {
 
 	@Test
 	public void getDurationsIncreasedSorted() {
-		Assert.assertNotNull(service);
-		Collection<Session> sessions = cinema.getSessions();
 		SortedSet<Duration> listDurations = service.getDurationsIncreasedSorted(sessions, 10);
 
 		Assert.assertEquals(listDurations.size(), 3);

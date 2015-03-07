@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
@@ -20,13 +21,17 @@ public class ServiceExample03matchImplTest {
 	@Autowired
 	private ServiceExample03match service;
 
-	Cinema cinema = new Cinema();
+	private Collection<Session> sessions = null;
+
+	@Before
+	public void initialize() {
+		Assert.assertNotNull(service);
+		Cinema cinema = new Cinema();
+		sessions = cinema.getSessions();
+	}
 
 	@Test
 	public void allSessionsFull() {
-		Assert.assertNotNull(service);
-
-		Collection<Session> sessions = cinema.getSessions();
 		LocalDate date = LocalDate.of(2015, 1, 15);
 		Boolean exists = service.allSessionsFull(sessions, date);
 		Assert.assertEquals(false, exists);
@@ -34,9 +39,6 @@ public class ServiceExample03matchImplTest {
 
 	@Test
 	public void existsSessionFull() {
-		Assert.assertNotNull(service);
-
-		Collection<Session> sessions = cinema.getSessions();
 		LocalDate date = LocalDate.of(2015, 1, 15);
 		Boolean exists = service.existsSessionFull(sessions, date);
 		Assert.assertEquals(true, exists);
@@ -44,9 +46,6 @@ public class ServiceExample03matchImplTest {
 
 	@Test
 	public void existsSessionNotFull() {
-		Assert.assertNotNull(service);
-
-		Collection<Session> sessions = cinema.getSessions();
 		LocalDate date = LocalDate.of(2015, 1, 15);
 		Boolean exists = service.existsSessionNotFull(sessions, date);
 		Assert.assertEquals(true, exists);
