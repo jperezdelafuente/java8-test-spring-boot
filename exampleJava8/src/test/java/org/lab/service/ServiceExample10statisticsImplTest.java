@@ -30,4 +30,31 @@ public class ServiceExample10statisticsImplTest {
 		Assert.assertEquals(avergePrice, 5.275, 0);
 	}
 
+	@Test
+	public void getMaxPrice() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Integer maxNumSeatsSold = service.getMaxNumSeatsSold(sessions);
+
+		Assert.assertEquals(maxNumSeatsSold, 251, 0);
+	}
+
+	@Test
+	public void getMinPrice() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Integer minNumSeatsSold = service.getMinNumSeatsSold(sessions);
+
+		Assert.assertEquals(minNumSeatsSold, 126, 0);
+	}
+
+	@Test
+	public void getSumPrice() {
+		Assert.assertNotNull(service);
+		Collection<Session> sessions = cinema.getSessions();
+		Long sumNumSeatsSold = service.getSumNumSeatsSold(sessions);
+
+		Assert.assertEquals(sumNumSeatsSold, 679, 0);
+	}
+
 }

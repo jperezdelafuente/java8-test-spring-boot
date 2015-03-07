@@ -14,4 +14,19 @@ public class ServiceExample10statisticsImpl extends Predicates implements Servic
 		return sessions.stream().collect(Collectors.summarizingDouble(Session::getPrice)).getAverage();
 	}
 
+	@Override
+	public Integer getMaxNumSeatsSold(Collection<Session> sessions) {
+		return sessions.stream().collect(Collectors.summarizingInt(Session::getNumSeatsSold)).getMax();
+	}
+
+	@Override
+	public Integer getMinNumSeatsSold(Collection<Session> sessions) {
+		return sessions.stream().collect(Collectors.summarizingInt(Session::getNumSeatsSold)).getMin();
+	}
+
+	@Override
+	public Long getSumNumSeatsSold(Collection<Session> sessions) {
+		return sessions.stream().collect(Collectors.summarizingInt(Session::getNumSeatsSold)).getSum();
+	}
+
 }
