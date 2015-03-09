@@ -14,4 +14,6 @@ public interface ServiceExample10statistics extends ServiceExampleDefault {
 
 	public Long getSumNumSeatsSold(Collection<Session> sessions);
 
+	public Double getStandardDeviationSeatsSold(Collection<Session> sessions);
+
 }

@@ -29,4 +29,12 @@ public class ServiceExample10statisticsImpl extends Predicates implements Servic
 		return sessions.stream().collect(Collectors.summarizingInt(Session::getNumSeatsSold)).getSum();
 	}
 
+	@Override
+	public Double getStandardDeviationSeatsSold(Collection<Session> sessions) {
+		Double averageSquare = sessions.stream().collect(Collectors.summarizingDouble(x -> x.getNumSeatsSold() * x.getNumSeatsSold()))
+				.getAverage();
+		Double average = sessions.stream().collect(Collectors.summarizingInt(Session::getNumSeatsSold)).getAverage();
+
+		return Math.sqrt(averageSquare - average * average);
+	}
 }

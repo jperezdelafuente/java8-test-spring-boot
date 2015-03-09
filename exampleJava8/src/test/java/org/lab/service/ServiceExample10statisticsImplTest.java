@@ -36,21 +36,27 @@ public class ServiceExample10statisticsImplTest {
 	}
 
 	@Test
-	public void getMaxPrice() {
+	public void getMaxNumSeatsSold() {
 		Integer maxNumSeatsSold = service.getMaxNumSeatsSold(sessions);
 		Assert.assertEquals(maxNumSeatsSold, 251, 0);
 	}
 
 	@Test
-	public void getMinPrice() {
+	public void getMinNumSeatsSold() {
 		Integer minNumSeatsSold = service.getMinNumSeatsSold(sessions);
 		Assert.assertEquals(minNumSeatsSold, 126, 0);
 	}
 
 	@Test
-	public void getSumPrice() {
+	public void getSumNumSeatsSold() {
 		Long sumNumSeatsSold = service.getSumNumSeatsSold(sessions);
 		Assert.assertEquals(sumNumSeatsSold, 679, 0);
+	}
+
+	@Test
+	public void getStandardDeviationSeatsSold() {
+		Double standardDeviationSeatsSold = service.getStandardDeviationSeatsSold(sessions);
+		Assert.assertEquals(standardDeviationSeatsSold, 48, 0.01D);
 	}
 
 }
