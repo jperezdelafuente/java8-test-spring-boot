@@ -11,4 +11,6 @@ public interface ServiceExample06reduce extends ServiceExampleDefault {
 
 	public Duration getSumDurationWithBiFunction(Collection<Session> sessions);
 
+	public Duration getSumDurationIncreasedWithBiFunction(Collection<Session> sessions, int minutes);
+
 }

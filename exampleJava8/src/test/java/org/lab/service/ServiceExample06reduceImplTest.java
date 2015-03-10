@@ -44,4 +44,11 @@ public class ServiceExample06reduceImplTest {
 		Assert.assertEquals(59, sumDuration.getMinutes(), 0);
 	}
 
+	@Test
+	public void getSumDurationIncreasedWithBiFunction() {
+		Duration sumDuration = service.getSumDurationIncreasedWithBiFunction(sessions, 10);
+		Assert.assertEquals(7, sumDuration.getHours(), 0);
+		Assert.assertEquals(29, sumDuration.getMinutes(), 0);
+	}
+
 }
