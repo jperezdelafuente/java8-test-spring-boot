@@ -1,7 +1,6 @@
 package org.lab.model;
 
 import java.time.LocalDate;
-import java.util.function.Function;
 
 public class Session {
 
@@ -69,8 +68,8 @@ public class Session {
 		this.price = price;
 	}
 
-	public Function<Session, Double> getOccupation() {
-		return x -> 1. * x.getNumSeatsSold() / x.getMovieTheater().getNumSeats();
+	public Double getOccupationRatio() {
+		return 1. * this.getNumSeatsSold() / this.getMovieTheater().getNumSeats();
 	}
 
 	@Override

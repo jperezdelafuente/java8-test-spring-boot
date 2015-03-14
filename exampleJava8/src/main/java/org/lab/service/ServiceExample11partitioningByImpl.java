@@ -16,4 +16,8 @@ public class ServiceExample11partitioningByImpl extends Predicates implements Se
 		return sessions.stream().collect(Collectors.partitioningBy(isSessionFull()));
 	}
 
+	@Override
+	public Map<Boolean, List<Session>> getMapSessionsOccupationPercent(Collection<Session> sessions, Double percent) {
+		return sessions.stream().collect(Collectors.partitioningBy(isOccupationPercent(percent)));
+	}
 }

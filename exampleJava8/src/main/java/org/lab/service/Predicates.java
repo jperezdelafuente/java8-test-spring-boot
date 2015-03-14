@@ -15,4 +15,7 @@ public class Predicates {
 		return session -> session.getNumSeatsSold().equals(session.getMovieTheater().getNumSeats());
 	}
 
+	Predicate<Session> isOccupationPercent(Double percent) {
+		return session -> session.getOccupationRatio().compareTo(percent / 100) >= 0;
+	}
 }
