@@ -3,3 +3,4 @@
 .settings
 target/
 git.properties
+hs_err_pid*
