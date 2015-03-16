@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -49,4 +50,19 @@ public class ServiceExample12groupingByImplTest {
 		Assert.assertEquals(listSession2.get(0).getCodSession().intValue(), 4);
 	}
 
+	@Test
+	public void getMapSessionsByTitle() {
+		Map<String, Set<Session>> mapSessionByTitle = service.getMapSessionsByTitle(sessions);
+
+		Assert.assertEquals(3, mapSessionByTitle.size());
+
+		Set<Session> listMovie1 = mapSessionByTitle.get("King kong");
+		Assert.assertEquals(1, listMovie1.size());
+
+		Set<Session> listMovie2 = mapSessionByTitle.get("Blade Runner");
+		Assert.assertEquals(1, listMovie2.size());
+
+		Set<Session> listMovie3 = mapSessionByTitle.get("Jurassic Park");
+		Assert.assertEquals(2, listMovie3.size());
+	}
 }

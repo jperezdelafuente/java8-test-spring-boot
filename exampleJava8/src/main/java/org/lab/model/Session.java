@@ -68,6 +68,10 @@ public class Session {
 		this.price = price;
 	}
 
+	public String getTitle() {
+		return movie.getTitle();
+	}
+
 	public Double getOccupationRatio() {
 		return 1. * this.getNumSeatsSold() / this.getMovieTheater().getNumSeats();
 	}
