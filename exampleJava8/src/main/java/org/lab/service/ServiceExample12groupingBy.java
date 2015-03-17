@@ -14,4 +14,6 @@ public interface ServiceExample12groupingBy extends ServiceExampleDefault {
 
 	public Map<String, Set<Session>> getMapSessionsByTitle(Collection<Session> sessions);
 
+	public Map<String, Long> getMapNumSessionsByTitle(Collection<Session> sessions);
+
 }

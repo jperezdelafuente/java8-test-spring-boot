@@ -65,4 +65,17 @@ public class ServiceExample12groupingByImplTest {
 		Set<Session> listMovie3 = mapSessionByTitle.get("Jurassic Park");
 		Assert.assertEquals(2, listMovie3.size());
 	}
+
+	@Test
+	public void getMapNumSessionsByTitle() {
+		Map<String, Long> mapNumSessionByTitle = service.getMapNumSessionsByTitle(sessions);
+
+		Assert.assertEquals(3, mapNumSessionByTitle.size());
+
+		Assert.assertEquals(1, mapNumSessionByTitle.get("King kong"), 0);
+
+		Assert.assertEquals(1, mapNumSessionByTitle.get("Blade Runner"), 0);
+
+		Assert.assertEquals(2, mapNumSessionByTitle.get("Jurassic Park"), 0);
+	}
 }
