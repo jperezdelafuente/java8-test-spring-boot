@@ -78,4 +78,17 @@ public class ServiceExample12groupingByImplTest {
 
 		Assert.assertEquals(2, mapNumSessionByTitle.get("Jurassic Park"), 0);
 	}
+
+	@Test
+	public void getMapAveragePriceByTitle() {
+		Map<String, Double> mapMapAveragePriceByTitle = service.getMapAveragePriceByTitle(sessions);
+
+		Assert.assertEquals(3, mapMapAveragePriceByTitle.size());
+
+		Assert.assertEquals(5.50, mapMapAveragePriceByTitle.get("King kong"), 0);
+
+		Assert.assertEquals(6.50, mapMapAveragePriceByTitle.get("Blade Runner"), 0);
+
+		Assert.assertEquals(4.55, mapMapAveragePriceByTitle.get("Jurassic Park"), 0);
+	}
 }
