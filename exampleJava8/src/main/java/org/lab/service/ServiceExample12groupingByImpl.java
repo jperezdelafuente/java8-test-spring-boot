@@ -33,4 +33,10 @@ public class ServiceExample12groupingByImpl extends Predicates implements Servic
 		return sessions.stream().collect(Collectors.groupingBy(Session::getTitle, Collectors.averagingDouble(Session::getPrice)));
 	}
 
+	@Override
+	public Map<LocalDate, Double> getMapTakingsByTitle(Collection<Session> sessions) {
+		return sessions.stream().collect(
+				Collectors.groupingBy(Session::getDateWithOutHour,
+						Collectors.summingDouble((Session x) -> x.getNumSeatsSold() * x.getPrice())));
+	}
 }

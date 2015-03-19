@@ -91,4 +91,16 @@ public class ServiceExample12groupingByImplTest {
 
 		Assert.assertEquals(4.55, mapMapAveragePriceByTitle.get("Jurassic Park"), 0);
 	}
+
+	@Test
+	public void getMapTakingsByTitle() {
+		Map<LocalDate, Double> mapMapTakingsByTitle = service.getMapTakingsByTitle(sessions);
+
+		Assert.assertEquals(2, mapMapTakingsByTitle.size());
+
+		Assert.assertEquals(2879, mapMapTakingsByTitle.get(LocalDate.of(2015, 1, 15)), 0);
+
+		Assert.assertEquals(694.6, mapMapTakingsByTitle.get(LocalDate.of(2015, 1, 16)), 0.01);
+
+	}
 }
