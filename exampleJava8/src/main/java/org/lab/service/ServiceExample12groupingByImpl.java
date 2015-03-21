@@ -29,6 +29,12 @@ public class ServiceExample12groupingByImpl extends Predicates implements Servic
 	}
 
 	@Override
+	public Map<String, List<Double>> getMapPricesByTitle(Collection<Session> sessions) {
+		return sessions.stream().collect(
+				Collectors.groupingBy(Session::getTitle, Collectors.mapping(Session::getPrice, Collectors.toList())));
+	}
+
+	@Override
 	public Map<String, Double> getMapAveragePriceByTitle(Collection<Session> sessions) {
 		return sessions.stream().collect(Collectors.groupingBy(Session::getTitle, Collectors.averagingDouble(Session::getPrice)));
 	}
