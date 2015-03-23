@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -46,6 +47,23 @@ public class ServiceExample12groupingByImplTest {
 		Assert.assertEquals(listSession1.get(2).getCodSession().intValue(), 3);
 
 		List<Session> listSession2 = mapSessionByDate.get(LocalDate.of(2015, 1, 16));
+		Assert.assertEquals(1, listSession2.size());
+		Assert.assertEquals(listSession2.get(0).getCodSession().intValue(), 4);
+	}
+
+	@Test
+	public void getSortedMapSessionsByDate() {
+		SortedMap<LocalDate, List<Session>> sortedMapSessionByDate = service.getSortedMapSessionsByDate(sessions);
+
+		Assert.assertEquals(2, sortedMapSessionByDate.size());
+
+		List<Session> listSession1 = sortedMapSessionByDate.get(LocalDate.of(2015, 1, 15));
+		Assert.assertEquals(3, listSession1.size());
+		Assert.assertEquals(listSession1.get(0).getCodSession().intValue(), 1);
+		Assert.assertEquals(listSession1.get(1).getCodSession().intValue(), 2);
+		Assert.assertEquals(listSession1.get(2).getCodSession().intValue(), 3);
+
+		List<Session> listSession2 = sortedMapSessionByDate.get(LocalDate.of(2015, 1, 16));
 		Assert.assertEquals(1, listSession2.size());
 		Assert.assertEquals(listSession2.get(0).getCodSession().intValue(), 4);
 	}
