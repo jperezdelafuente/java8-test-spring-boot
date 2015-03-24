@@ -19,6 +19,8 @@ public interface ServiceExample12groupingBy extends ServiceExampleDefault {
 
 	public Map<String, Long> getMapNumSessionsByTitle(Collection<Session> sessions);
 
+	public Map<Long, Set<String>> getMapTitleBypNumSessions(Collection<Session> sessions);
+
 	public Map<String, List<Double>> getMapPricesByTitle(Collection<Session> sessions);
 
 	public Map<String, Double> getMapAveragePriceByTitle(Collection<Session> sessions);

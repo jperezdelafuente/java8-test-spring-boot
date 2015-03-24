@@ -98,6 +98,16 @@ public class ServiceExample12groupingByImplTest {
 	}
 
 	@Test
+	public void getMapTitleByNumSessions() {
+		Map<Long, Set<String>> mapTitleByNumSession = service.getMapTitleBypNumSessions(sessions);
+
+		Assert.assertEquals(2, mapTitleByNumSession.size());
+
+		Assert.assertEquals(2, mapTitleByNumSession.get(1L).size());
+		Assert.assertEquals(1, mapTitleByNumSession.get(2L).size());
+	}
+
+	@Test
 	public void getMapPricesByTitle() {
 		Map<String, List<Double>> mapMapPricesByTitle = service.getMapPricesByTitle(sessions);
 
