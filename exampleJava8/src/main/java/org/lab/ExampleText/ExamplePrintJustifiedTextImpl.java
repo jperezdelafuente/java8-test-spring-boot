@@ -12,69 +12,86 @@ public class ExamplePrintJustifiedTextImpl extends Predicates implements Example
 
 	private LinkedHashMap<Integer, List<String>> generateMap(String phrase, int sizeLine) {
 		String[] charArray = phrase.split(" ");
-		int sumCharInLine = 0;
-		LinkedHashMap<Integer, List<String>> listLines = new LinkedHashMap<Integer, List<String>>();
+
+		LinkedHashMap<Integer, List<String>> mapLines = new LinkedHashMap<Integer, List<String>>();
 
 		int numLine = 1;
+		int sumCharInLine = 0;
 		boolean changeLine = true;
+
 		for (int i = 0; i < charArray.length; i++) {
 			List<String> listWordsInLine;
-			sumCharInLine += charArray[i].length();
+			String word = charArray[i];
+			sumCharInLine += word.length();
 			if (!changeLine) {
 				sumCharInLine++;
 			}
 			if (sumCharInLine <= sizeLine) {
 				changeLine = (sumCharInLine == sizeLine) ? true : false;
-				if (listLines.get(numLine) == null) {
+				if (mapLines.get(numLine) == null) {
 					listWordsInLine = new LinkedList<String>();
 				} else {
-					listWordsInLine = listLines.get(numLine);
+					listWordsInLine = mapLines.get(numLine);
 				}
-				listWordsInLine.add(charArray[i]);
-				listLines.put(numLine, listWordsInLine);
 			} else {
 				changeLine = true;
 				numLine++;
-				sumCharInLine = charArray[i].length() + 1;
+				sumCharInLine = word.length() + 1;
 				listWordsInLine = new LinkedList<String>();
-				listWordsInLine.add(charArray[i]);
-				listLines.put(numLine, listWordsInLine);
 			}
+			listWordsInLine.add(word);
+			mapLines.put(numLine, listWordsInLine);
 		}
-		return listLines;
+
+		return mapLines;
 	}
 
-	public void printJustifiedText(String phrase, int sizeLine) {
+	private void printWhiteSpace(int num) {
+		for (int i = 1; i <= num; i++) {
+			System.out.print(" ");
+		}
+	}
 
-		LinkedHashMap<Integer, List<String>> listLines = this.generateMap(phrase, sizeLine);
+	private void printWord(String word) {
+		System.out.print(word);
+	}
+
+	private void printNewLine() {
+		System.out.println("");
+	}
+
+	public int printJustifiedText(String phrase, int sizeLine) {
+
+		LinkedHashMap<Integer, List<String>> mapLines = this.generateMap(phrase, sizeLine);
 
 		int numLine = 0;
-		for (List<String> listWordsInLine : listLines.values()) {
+
+		for (List<String> listWordsInLine : mapLines.values()) {
 			numLine++;
 			int sumChar = listWordsInLine.stream().mapToInt(word -> word.length()).sum();
-			int diferenceChar = sizeLine - sumChar;
-			int numSpaces = (listWordsInLine.size() - 1);
-			int sizeSpace = 1;
-			int modSpaces = 0;
-			if (numSpaces != 0) {
-				sizeSpace = diferenceChar / numSpaces;
-				modSpaces = diferenceChar % numSpaces;
+			int differenceChar = sizeLine - sumChar;
+			int numWhiteSpaces = (listWordsInLine.size() - 1);
+			int sizeWhiteSpace = 1;
+			int modWhiteSpaces = 0;
+			if (numWhiteSpaces != 0) {
+				sizeWhiteSpace = differenceChar / numWhiteSpaces;
+				modWhiteSpaces = differenceChar % numWhiteSpaces;
 			}
 			for (String word : listWordsInLine) {
-				System.out.print(word);
-				if (numLine != listLines.size()) {
-					for (int i = 1; i <= sizeSpace; i++) {
-						System.out.print(" ");
-					}
-					if (modSpaces > 0) {
-						System.out.print(" ");
-						modSpaces--;
+				this.printWord(word);
+				if (numLine != mapLines.size()) {
+					printWhiteSpace(sizeWhiteSpace);
+					if (modWhiteSpaces > 0) {
+						this.printWhiteSpace(1);
+						modWhiteSpaces--;
 					}
 				} else {
-					System.out.print(" ");
+					this.printWhiteSpace(1);
 				}
 			}
-			System.out.println("");
+			this.printNewLine();
 		}
+
+		return mapLines.size();
 	}
 }
