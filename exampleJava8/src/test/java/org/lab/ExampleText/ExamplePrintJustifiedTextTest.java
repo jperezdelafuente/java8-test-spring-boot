@@ -15,7 +15,7 @@ public class ExamplePrintJustifiedTextTest {
 	private ExamplePrintJustifiedText service;
 
 	@Test
-	public void contextLoads() {
+	public void testPrintJustifiedText() {
 		String phrase = "Dispatching mechanisms from the core of distributed object computing (DOC) middleware.";
 		for (int sizeLine = 11; sizeLine <= 86; sizeLine++) {
 			System.out.println("----------------- Size Line: " + sizeLine);
