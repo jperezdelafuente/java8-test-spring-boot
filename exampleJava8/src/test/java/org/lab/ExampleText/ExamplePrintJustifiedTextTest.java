@@ -12,14 +12,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ExamplePrintJustifiedTextTest {
 
 	@Autowired
-	private ExamplePrintJustifiedText service;
+	private ExamplePrintJustifiedText examplePrintJustifiedText;
 
 	@Test
 	public void testPrintJustifiedText() {
 		String phrase = "Dispatching mechanisms from the core of distributed object computing (DOC) middleware.";
 		for (int sizeLine = 11; sizeLine <= 86; sizeLine++) {
 			System.out.println("----------------- Size Line: " + sizeLine);
-			int numLines = service.printJustifiedText(phrase, sizeLine);
+			int numLines = examplePrintJustifiedText.printJustifiedText(phrase, sizeLine);
 		}
 	}
 

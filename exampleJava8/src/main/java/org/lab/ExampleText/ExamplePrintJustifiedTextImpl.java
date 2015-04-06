@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.lab.service.Predicates;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class ExamplePrintJustifiedTextImpl extends Predicates implements ExamplePrintJustifiedText {
 
 	private LinkedHashMap<Integer, List<String>> generateMap(String phrase, int sizeLine) {
