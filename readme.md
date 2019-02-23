@@ -1,6 +1,6 @@
-# java8-test-spring-boot
+# Java 8 test with Spring-boot 2.1.x
 
-Testing Java 8 features whith Spring Boot and Jacoco (Code Coverage Tool).
+Testing Java 8 features whith Spring Boot 2.1.x and Jacoco (Code Coverage Tool).
 
 
 
