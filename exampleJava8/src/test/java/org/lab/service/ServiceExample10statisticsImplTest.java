@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lab.ExampleJava8Application;
 import org.lab.model.Cinema;
+import org.lab.model.MovieTheater;
 import org.lab.model.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,11 +23,14 @@ public class ServiceExample10statisticsImplTest {
 
 	private Collection<Session> sessions = null;
 
+    private Collection<MovieTheater> movieTheaters = null;
+
 	@Before
 	public void initialize() {
 		Assert.assertNotNull(service);
 		Cinema cinema = new Cinema();
 		sessions = cinema.getSessions();
+        movieTheaters = cinema.getMovieTheaters();
 	}
 
 	@Test
@@ -48,10 +52,28 @@ public class ServiceExample10statisticsImplTest {
 	}
 
 	@Test
-	public void getSumNumSeatsSold() {
+    public void getSumNumSeatsSold() {
 		Long sumNumSeatsSold = service.getSumNumSeatsSold(sessions);
 		Assert.assertEquals(sumNumSeatsSold, 679, 0);
 	}
+
+    @Test
+    public void getSumObjectsInMovieTheaters() {
+        MovieTheater movieTheaterSum = service.getSumObjectsInMovieTheaters(movieTheaters);
+        Assert.assertEquals(movieTheaterSum.getNumSeats(), 677, 0);
+        Assert.assertEquals(movieTheaterSum.getNumLights(), 58, 0);
+        Assert.assertEquals(movieTheaterSum.getNumSpeakers(), 18, 0);
+        Assert.assertEquals(movieTheaterSum.getNumLitterbins(), 13, 0);
+    }
+
+    @Test
+    public void getAverageObjectsInMovieTheaters() {
+        MovieTheater movieTheaterSum = service.getAverageObjectsInMovieTheaters(movieTheaters);
+        Assert.assertEquals(movieTheaterSum.getNumSeats(), 225, 0);
+        Assert.assertEquals(movieTheaterSum.getNumLights(), 19, 0);
+        Assert.assertEquals(movieTheaterSum.getNumSpeakers(), 6, 0);
+        Assert.assertEquals(movieTheaterSum.getNumLitterbins(), 4, 0);
+    }
 
 	@Test
 	public void getStandardDeviationSeatsSold() {

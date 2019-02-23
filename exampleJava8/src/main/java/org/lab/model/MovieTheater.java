@@ -6,6 +6,12 @@ public class MovieTheater {
 
 	private Integer numSeats;
 
+    private Integer numSpeakers;
+
+    private Integer numLights;
+
+    private Integer numLitterbins;
+
 	public String getCode() {
 		return code;
 	}
@@ -22,15 +28,46 @@ public class MovieTheater {
 		this.numSeats = numSeats;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("MovieTheater [code=");
-		builder.append(code);
-		builder.append(", numSeats=");
-		builder.append(numSeats);
-		builder.append("]");
-		return builder.toString();
-	}
+    public Integer getNumSpeakers() {
+        return numSpeakers;
+    }
+
+    public void setNumSpeakers(Integer numSpeakers) {
+        this.numSpeakers = numSpeakers;
+    }
+
+    public Integer getNumLights() {
+        return numLights;
+    }
+
+    public void setNumLights(Integer numLights) {
+        this.numLights = numLights;
+    }
+
+    public Integer getNumLitterbins() {
+        return numLitterbins;
+    }
+
+    public void setNumLitterbins(Integer numLitterbins) {
+        this.numLitterbins = numLitterbins;
+    }
+    
+    
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("MovieTheater [code=");
+        builder.append(code);
+        builder.append(", numSeats=");
+        builder.append(numSeats);
+        builder.append(", numSpeakers=");
+        builder.append(numSpeakers);
+        builder.append(", numLights=");
+        builder.append(numLights);
+        builder.append(", numLitterbins=");
+        builder.append(numLitterbins);
+        builder.append("]");
+        return builder.toString();
+    }
 
 }

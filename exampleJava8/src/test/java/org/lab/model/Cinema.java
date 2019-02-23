@@ -10,10 +10,13 @@ public class Cinema {
 
 	Collection<Movie> movies = null;
 
+    Collection<MovieTheater> movieTheaters = null;
+
 	public Cinema() {
 
 		sessions = new ArrayList<Session>();
 		movies = new ArrayList<Movie>();
+        movieTheaters = new ArrayList<MovieTheater>();
 
 		// Movies
 		Movie movie1 = new Movie();
@@ -47,14 +50,26 @@ public class Cinema {
 		MovieTheater movieTheater1 = new MovieTheater();
 		movieTheater1.setCode("MT1");
 		movieTheater1.setNumSeats(300);
+        movieTheater1.setNumLights(20);
+        movieTheater1.setNumSpeakers(8);
+        movieTheater1.setNumLitterbins(6);
+        movieTheaters.add(movieTheater1);
 
 		MovieTheater movieTheater2 = new MovieTheater();
 		movieTheater2.setCode("MT2");
 		movieTheater2.setNumSeats(126);
+        movieTheater2.setNumLights(16);
+        movieTheater2.setNumSpeakers(4);
+        movieTheater2.setNumLitterbins(3);
+        movieTheaters.add(movieTheater2);
 
 		MovieTheater movieTheater3 = new MovieTheater();
 		movieTheater3.setCode("MT3");
 		movieTheater3.setNumSeats(251);
+        movieTheater3.setNumLights(22);
+        movieTheater3.setNumSpeakers(6);
+        movieTheater3.setNumLitterbins(4);
+        movieTheaters.add(movieTheater3);
 
 		// Sessions
 		Session session1 = new Session();
@@ -110,5 +125,9 @@ public class Cinema {
 	public Collection<Movie> getMovies() {
 		return movies;
 	}
+
+    public Collection<MovieTheater> getMovieTheaters() {
+        return movieTheaters;
+    }
 
 }
