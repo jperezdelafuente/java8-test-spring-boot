@@ -16,6 +16,8 @@ public class Session {
 
 	private Double price;
 
+    private Integer totalIncome;
+
 	public Integer getCodSession() {
 		return codSession;
 	}
@@ -76,7 +78,15 @@ public class Session {
 		return 1. * this.getNumSeatsSold() / this.getMovieTheater().getNumSeats();
 	}
 
-	@Override
+    public Integer getTotalIncome() {
+        return totalIncome;
+    }
+
+    public void setTotalIncome(Integer integer) {
+        this.totalIncome = integer;
+    }
+
+    @Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Session [codSession=");
@@ -91,6 +101,8 @@ public class Session {
 		builder.append(numSeatsSold);
 		builder.append(", price=");
 		builder.append(price);
+        builder.append(", totalIncome=");
+        builder.append(totalIncome);
 		builder.append("]");
 		return builder.toString();
 	}

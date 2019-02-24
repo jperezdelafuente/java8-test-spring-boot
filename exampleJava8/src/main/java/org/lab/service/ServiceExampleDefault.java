@@ -8,7 +8,6 @@ import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
 import org.lab.model.Duration;
-import org.lab.model.MovieTheater;
 import org.lab.model.Session;
 
 public interface ServiceExampleDefault {
@@ -27,12 +26,12 @@ public interface ServiceExampleDefault {
 		return new Duration(hor + min / 60, min % 60);
 	};
 
-    public default Integer sumObjetsInMovieTheaters(Collection<MovieTheater> listMovieTheaters, ToIntFunction<MovieTheater> object) {
-        return new Long(listMovieTheaters.stream().collect(Collectors.summarizingInt(object)).getSum()).intValue();
+    public default <T> Integer sumObjets(Collection<T> collection, ToIntFunction<T> object) {
+        return new Long(collection.stream().collect(Collectors.summarizingInt(object)).getSum()).intValue();
     }
 
-    public default Integer averageObjetsInMovieTheaters(Collection<MovieTheater> listMovieTheaters, ToIntFunction<MovieTheater> object) {
-        return new Double(listMovieTheaters.stream().collect(Collectors.summarizingInt(object)).getAverage()).intValue();
+    public default <T> Integer averageObjets(Collection<T> collection, ToIntFunction<T> object) {
+        return new Double(collection.stream().collect(Collectors.summarizingInt(object)).getAverage()).intValue();
     }
 
 }

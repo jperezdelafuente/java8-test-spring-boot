@@ -34,10 +34,10 @@ public class ServiceExample10statisticsImpl extends Predicates implements Servic
     public MovieTheater getSumObjectsInMovieTheaters(Collection<MovieTheater> listMovieTheaters) {
         MovieTheater movieTheaterSum = new MovieTheater();
 
-        movieTheaterSum.setNumSeats(sumObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumSeats));
-        movieTheaterSum.setNumSpeakers(sumObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumSpeakers));
-        movieTheaterSum.setNumLights(sumObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumLights));
-        movieTheaterSum.setNumLitterbins(sumObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumLitterbins));
+        movieTheaterSum.setNumSeats(sumObjets(listMovieTheaters, MovieTheater::getNumSeats));
+        movieTheaterSum.setNumSpeakers(sumObjets(listMovieTheaters, MovieTheater::getNumSpeakers));
+        movieTheaterSum.setNumLights(sumObjets(listMovieTheaters, MovieTheater::getNumLights));
+        movieTheaterSum.setNumLitterbins(sumObjets(listMovieTheaters, MovieTheater::getNumLitterbins));
 
         return movieTheaterSum;
     }
@@ -46,15 +46,35 @@ public class ServiceExample10statisticsImpl extends Predicates implements Servic
     public MovieTheater getAverageObjectsInMovieTheaters(Collection<MovieTheater> listMovieTheaters) {
         MovieTheater movieTheaterSum = new MovieTheater();
 
-        movieTheaterSum.setNumSeats(averageObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumSeats));
-        movieTheaterSum.setNumSpeakers(averageObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumSpeakers));
-        movieTheaterSum.setNumLights(averageObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumLights));
-        movieTheaterSum.setNumLitterbins(averageObjetsInMovieTheaters(listMovieTheaters, MovieTheater::getNumLitterbins));
+        movieTheaterSum.setNumSeats(averageObjets(listMovieTheaters, MovieTheater::getNumSeats));
+        movieTheaterSum.setNumSpeakers(averageObjets(listMovieTheaters, MovieTheater::getNumSpeakers));
+        movieTheaterSum.setNumLights(averageObjets(listMovieTheaters, MovieTheater::getNumLights));
+        movieTheaterSum.setNumLitterbins(averageObjets(listMovieTheaters, MovieTheater::getNumLitterbins));
 
         return movieTheaterSum;
     }
 
-	@Override
+    @Override
+    public Session getSumObjectsInSession(Collection<Session> listSessions) {
+        Session sessionSum = new Session();
+
+        sessionSum.setNumSeatsSold(sumObjets(listSessions, Session::getNumSeatsSold));
+        sessionSum.setTotalIncome(sumObjets(listSessions, x -> new Double(x.getNumSeatsSold() * x.getPrice()).intValue()));
+
+        return sessionSum;
+    }
+
+    @Override
+    public Session getAverageObjectsInSession(Collection<Session> listSessions) {
+        Session sessionSum = new Session();
+
+        sessionSum.setNumSeatsSold(averageObjets(listSessions, Session::getNumSeatsSold));
+        sessionSum.setTotalIncome(averageObjets(listSessions, x -> new Double(x.getNumSeatsSold() * x.getPrice()).intValue()));
+
+        return sessionSum;
+    }
+
+    @Override
 	public Double getStandardDeviationSeatsSold(Collection<Session> sessions) {
 		Double averageSquare = sessions.stream().collect(Collectors.summarizingDouble(x -> x.getNumSeatsSold() * x.getNumSeatsSold()))
 				.getAverage();

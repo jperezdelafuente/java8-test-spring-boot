@@ -68,11 +68,25 @@ public class ServiceExample10statisticsImplTest {
 
     @Test
     public void getAverageObjectsInMovieTheaters() {
-        MovieTheater movieTheaterSum = service.getAverageObjectsInMovieTheaters(movieTheaters);
-        Assert.assertEquals(movieTheaterSum.getNumSeats(), 225, 0);
-        Assert.assertEquals(movieTheaterSum.getNumLights(), 19, 0);
-        Assert.assertEquals(movieTheaterSum.getNumSpeakers(), 6, 0);
-        Assert.assertEquals(movieTheaterSum.getNumLitterbins(), 4, 0);
+        MovieTheater movieTheaterAverage = service.getAverageObjectsInMovieTheaters(movieTheaters);
+        Assert.assertEquals(movieTheaterAverage.getNumSeats(), 225, 0);
+        Assert.assertEquals(movieTheaterAverage.getNumLights(), 19, 0);
+        Assert.assertEquals(movieTheaterAverage.getNumSpeakers(), 6, 0);
+        Assert.assertEquals(movieTheaterAverage.getNumLitterbins(), 4, 0);
+    }
+
+    @Test
+    public void getSumObjectsInSession() {
+        Session sesionSum = service.getSumObjectsInSession(sessions);
+        Assert.assertEquals(sesionSum.getNumSeatsSold(), 679, 0);
+        Assert.assertEquals(sesionSum.getTotalIncome(), 3572, 0);
+    }
+
+    @Test
+    public void getAverageObjectsInSession() {
+        Session sesionAverage = service.getAverageObjectsInSession(sessions);
+        Assert.assertEquals(sesionAverage.getNumSeatsSold(), 169, 0);
+        Assert.assertEquals(sesionAverage.getTotalIncome(), 893, 0);
     }
 
 	@Test

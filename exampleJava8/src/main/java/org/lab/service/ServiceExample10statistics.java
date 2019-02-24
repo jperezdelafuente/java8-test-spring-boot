@@ -19,6 +19,10 @@ public interface ServiceExample10statistics extends ServiceExampleDefault {
 
     public MovieTheater getAverageObjectsInMovieTheaters(Collection<MovieTheater> listMovieTheaters);
 
+    public Session getSumObjectsInSession(Collection<Session> listSessions);
+    
+    public Session getAverageObjectsInSession(Collection<Session> listSessions);
+
 	public Double getStandardDeviationSeatsSold(Collection<Session> sessions);
 
 }
